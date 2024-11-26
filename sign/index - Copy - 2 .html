@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orange Dynasty Blood Level</title>
+    <style>
+        body {
+            background: linear-gradient(45deg, #FFA500, #FF4500);
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-family: 'Lucida Sans Unicode', 'comic sans', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-style: italic;
+
+        }
+
+        form {
+            background: rgba(255, 165, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            display: inline-block;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        input,
+        button {
+            padding: 10px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        button {
+            background-color: #FF4500;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #FF6347;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .footer-inner {
+            max-width: 1100;
+            margin: 0 auto;
+            padding: 0 20px 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+        .footer li {
+            margin-right: 30px;
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            font-size: 12px;
+            padding: 20px 0;
+        }
+
+        .custom-alert {
+            display: none;
+            background-color: #FF4500;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            text-align: center;
+            font-size: 1.2em;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .custom-alert button {
+            background-color: white;
+            color: #FF4500;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .background-image img {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            opacity: 0.9;
+            animation: float 10s infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* media Queries */
+        @media (max-width: 1200px) {
+            body {
+                padding: 30px;
+            }
+
+            h1,
+            h2 {
+                font-size: 2em;
+            }
+
+            form {
+                padding: 15px;
+            }
+
+            input,
+            button {
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+
+            h1,
+            h2 {
+                font-size: 1.8em;
+            }
+
+            form {
+                padding: 10px;
+            }
+
+            input,
+            button {
+                font-size: 0.8em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            h1,
+            h2 {
+                font-size: 1.5em;
+            }
+
+            form {
+                padding: 5px;
+            }
+
+            input,
+            button {
+                font-size: 0.7em;
+            }
+        }
+    </style>
+    <script>
+        function measureOrangeDynastyBlood() {
+            let name = document.getElementById("name").value;
+            name = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+            let percentage = Math.floor(Math.random() * 6) + 90;
+            let message = "";
+
+            if (percentage >= 90 && percentage <= 98) {
+                message = (percentage + "% " + "Orange" + "blood.  " + name + ", you definiately see the signs!!!");
+            } else {
+                message = (name + ", your level of orange dynasty blood is " + percentage + "%");
+            }
+
+            showAlert(message);
+        }
+
+        function showAlert(message) {
+            let alertBox = document.getElementById("customAlert");
+            alertBox.innerHTML = message + '<br><button onclick="closeAlert()">OK</button>';
+            alertBox.style.display = "block";
+        }
+
+        function closeAlert() {
+            document.getElementById("customAlert").style.display = "none";
+        }
+    </script>
+</head>
+
+<body>
+    <h1>How Signed are You</h1>
+    <form onsubmit="event.preventDefault(); measureOrangeDynastyBlood();">
+        <label for="name">Enter your name:</label>
+        <input type="text" id="name" name="name" required>
+        <button type="submit">Check</button>
+    </form>
+    <h2>The Sign Dynasty</h2>
+    <div id="customAlert" class="custom-alert"></div>
+    <div class="background-image">
+        <img src="img/11.png" style="top: 10%; left: 10%; right: 100%;">
+        <img src="img/22.png" style="top: 50%; left: 55%; right: 20%;">
+        <img src="img/33 (2).png" style="top: 50%; left: 10%; right: 60%;">
+        <img src="img/33.png" style="top: 30%; left: 30%; right: 80%;">
+        <img src="img/44.png" style="top: 20%; left: 10%; right: 80%;">
+
+
+    </div>
+    <footer class="footer">
+        <div class="footer-inner">
+            <div><i class="fas fa-globe">English (United States)</i></div>
+            <ul>
+                <li><a href="#">&copy; Web3Tyrant 2024
+                    </a></li>
+
+            </ul>
+        </div>
+    </footer>
+</body>
+
+</html>
